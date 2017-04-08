@@ -1,0 +1,119 @@
+import java.util.Scanner;
+import java.util.stream.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+public class DataHunt {
+
+
+	public static void Set1a(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.filter(s --> s.equals(0))
+				.sum());
+	}
+
+	public static void Set1b(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+	public static void Set1c(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+
+
+	public static void Set2a(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+	public static void Set2b(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+	public static void Set2c(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+	public static void Set3a(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+
+	}
+
+	public static void Set3b(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+	public static void Set3c(){
+		Stream stream = Files.lines(Paths.get("Discoveries.csv", null));
+
+		System.out.println(
+				Files.lines(Paths.get("Discoveries.csv", null))
+				.map()
+				.reduce());
+	}
+
+	public static void main(String[] args){
+		System.out.println("Data set 1: Scientific Discoveries");
+		System.out.println("Question a) How many years had 0 major discoveries?");
+		Set1a();
+		System.out.println("Question b) What year had the most discoveries?");
+		Set1b();
+		System.out.println("Question c) What is the total number of discoveries in the set?");
+		Set1c();
+		System.out.println("Data set 2: Titanic Passengers");
+		System.out.println("Question a) Who was the oldest surviving male passenger?");
+		Set2a();
+		System.out.println("Question b) How many women survived the disaster?");
+		Set2b();
+		System.out.println("Question c) How many children under 10 were on the ship?");
+		Set2c();
+		System.out.println("Data set 3: Presidential Approval Ratings");
+		System.out.println("Question a) What is the lowest approval rating in an election year?");
+		Set3a();
+		System.out.println("Question b) What percentage of ratings are between 40% and 60%?");
+		Set3b();
+		System.out.println("Question c) What was the President's highest approval rating in 1962?");
+		Set3c();
+
+	}
+}
+
+
