@@ -1,0 +1,34 @@
+import java.io.File;
+import java.nio.file.Files;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class DecisionTree {
+
+	private DecisionNode root;
+	
+	public DecisionTree(){
+		this.root = new guessNode(Dog);
+	}
+	
+	public DecisionTree(File file){
+		
+	}
+	
+	public int countObjects(){
+		if (this.root != null){
+			return 1 + this.root.left.countObjects() + this.root.right.countObjects();			
+		}
+		else{
+			return 0;
+		}
+	}
+	
+	public void guess(Scanner in){
+		
+	}
+	
+	public void write(FileWriter out){
+		
+	}
+}

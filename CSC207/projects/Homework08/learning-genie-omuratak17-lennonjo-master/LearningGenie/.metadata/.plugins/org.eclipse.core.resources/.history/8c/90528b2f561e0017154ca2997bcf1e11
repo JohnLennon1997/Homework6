@@ -1,0 +1,15 @@
+import java.io.File;
+import java.nio.file.Files;
+
+public class DecisionTree {
+
+	private DecisionNode root;
+	
+	public DecisionTree(){
+		this.root = new guessNode(Dog);
+	}
+	
+	public DecisionTree(File file){
+		
+	}
+}

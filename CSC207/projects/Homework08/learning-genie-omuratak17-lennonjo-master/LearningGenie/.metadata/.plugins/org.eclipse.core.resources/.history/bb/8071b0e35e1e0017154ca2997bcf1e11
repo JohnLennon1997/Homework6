@@ -1,0 +1,135 @@
+package decisionTrees;
+import java.io.File;
+import java.nio.file.Files;
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.io.IOException;
+
+public class DecisionTree {
+
+
+	private DecisionNode root;
+
+	public DecisionTree(){
+		this.root = new GuessNode("Dog");
+	}
+
+	public DecisionTree(File file){
+
+	}
+
+	public int countObjects(){
+		if (this.root != null){
+			return this.root.countObjects();			
+		}
+		else{
+			return 0;
+		}
+	}
+
+	public void guess(Scanner in){
+		System.out.println("I am the learning genie!");
+		System.out.println("I can figure out whatever you are thinking of by asking questions.");
+		System.out.println("I know 1 thing!\n");
+		System.out.println("Think of an object!");
+		this.root.guess(in);
+	}
+
+	public void write(FileWriter out) throws IOException{
+		this.root.write(out);
+
+	}
+
+	public interface DecisionNode{
+		public int countObjects();
+		public DecisionNode guess(Scanner in);
+		public void write(FileWriter out) throws IOException;
+	}
+
+	private class QuestionNode implements DecisionNode{
+
+		private String data;
+		private DecisionNode yes;
+		private DecisionNode no;
+
+		public QuestionNode(String data, DecisionNode yes, DecisionNode no){
+			this.data = data;
+			this.yes = yes;
+			this.no = no;
+		}
+
+		@Override
+		public int countObjects() {
+			return 1 + yes.countObjects() + no.countObjects();
+		}
+
+		@Override
+		public DecisionNode guess(Scanner in) {
+			System.out.println(this.data);
+			String answer = in.next();
+			if (answer.equals("Yes")){
+				DecisionNode addNode = this.yes.guess(in);
+				this.yes = addNode;
+				return this;
+			}
+			else{
+				DecisionNode addNode = this.no.guess(in);
+				this.no = addNode;
+				return this;
+			}
+		}
+
+		@Override
+		public void write(FileWriter out) throws IOException {
+			out.write("#" + this.data + "\n");
+			yes.write(out);
+			no.write(out);
+		}
+
+	}
+
+	private class GuessNode implements DecisionNode{
+
+		private String data;
+
+		public GuessNode(String data){
+			this.data = data;
+		}
+
+		public int countObjects() {
+			return 1;
+		}
+
+		public DecisionNode guess(Scanner in) {
+			System.out.println("Are you thinking of " + this.data + "? ");
+			String input = in.next();
+			if (input.equals("Yes")){
+				System.out.println("Excellent, thanks!");
+				return this;
+			} else {
+				System.out.println("Oh no, I was wrong!");
+				System.out.println("What were you thinking of?");
+				String answer = in.next();
+				System.out.println("What is a yes/no question that distinguishes a " 
+						+ this.data + " from a " + answer + "?");
+
+				System.out.println("Yes corresponds to " 
+						+ this.data + ", No corresponds to " + answer + ")");
+
+				String question = in.next();
+				DecisionNode wrongAnswerNode = new GuessNode(answer);
+				DecisionNode newQuestionNode = new QuestionNode(question, this, wrongAnswerNode);
+
+				return newQuestionNode;
+			}
+
+		}
+
+		@Override
+		public void write(FileWriter out) throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+
+	}
+}

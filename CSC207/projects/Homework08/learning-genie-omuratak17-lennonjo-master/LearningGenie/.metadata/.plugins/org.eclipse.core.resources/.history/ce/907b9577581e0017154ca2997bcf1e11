@@ -1,0 +1,90 @@
+package decisionTrees;
+import java.io.File;
+import java.nio.file.Files;
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.io.IOException;
+
+public class DecisionTree {
+
+	private DecisionNode root;
+	
+	public DecisionTree(){
+		this.root = new guessNode(Dog);
+	}
+	
+	public DecisionTree(File file){
+		
+	}
+	
+	public int countObjects(){
+		if (this.root != null){
+			return 1 + this.root.left.countObjects() + this.root.right.countObjects();			
+		}
+		else{
+			return 0;
+		}
+	}
+	
+	public void guess(Scanner in){
+		
+	}
+	
+	public void write(FileWriter out){
+		
+	}
+	
+	public interface DecisionNode{
+		public int countObjects();
+		public DecisionNode guess(Scanner in);
+		public void write(FileWriter out) throws IOException;
+	}
+	
+	private class QuestionNode implements DecisionNode{
+
+		private String data;
+		private DecisionNode yes;
+		private DecisionNode no;
+		@Override
+		public int countObjects() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public DecisionNode guess(Scanner in) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void write(FileWriter out) throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	private class GuessNode implements DecisionNode{
+
+		private String data;
+		@Override
+		public int countObjects() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public DecisionNode guess(Scanner in) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void write(FileWriter out) throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+}
